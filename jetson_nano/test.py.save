@@ -1,0 +1,29 @@
+# 匯入函式庫
+import cv2
+# 設定從哪顆鏡頭讀取影像，本範例中為video0
+webcam = cv2.VideoCapture(0)
+# 讀取影像
+return_value, image = webcam.read()
+
+    net = cv2.dnn.readNetFromTorch('feathers.t7')
+    net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV);
+    # 讀取圖片
+    image = frame
+    (h, w) = image.shape[:2]
+    blob = cv2.dnn.blobFromImage(image, 1.0, (w, h), (103.939, 116.779, 123.680$
+    # 進行計算
+    net.setInput(blob)
+    out = net.forward()
+    out = out.reshape(3, out.shape[2], out.shape[3])
+    out[0] += 103.939
+    out[1] += 116.779
+    out[2] += 123.6out /= 255
+frame = out.transpose(1, 2, 0)
+
+# 顯示影像
+cv2.imshow("frame", frame)
+
+# 儲存名為Me.png的照片
+cv2.imwrite("Me.png", image)
+# 刪除webcam，養成不佔用資源的好習慣
+del(webcam)
